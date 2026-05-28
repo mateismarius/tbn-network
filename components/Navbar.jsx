@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Logo from './Logo'
 
-const NAV_LINKS = ['Services', 'Solutions', 'Technology', 'About']
+const NAV_LINKS = ['Services', 'Technology', 'About']
 
 const border = 'rgba(163,230,53,0.15)'
 const accent = '#A3E635'

@@ -19,29 +19,19 @@ const TERMINAL_LINES = [
 
 function TerminalLine({ line }) {
   const [visible, setVisible] = useState(false)
-
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), line.delay)
     return () => clearTimeout(t)
   }, [line.delay])
-
-  const color =
-    line.type === 'ok' ? '#22C55E' : line.type === 'accent' ? accent : '#64748B'
-
+  const color = line.type === 'ok' ? '#22C55E' : line.type === 'accent' ? accent : '#64748B'
   return (
-    <div
-      style={{
-        fontFamily: 'monospace',
-        fontSize: 12.5,
-        color: '#64748B',
-        marginBottom: 5,
-        display: 'flex',
-        gap: 8,
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateX(0)' : 'translateX(-8px)',
-        transition: 'all 0.4s ease',
-      }}
-    >
+    <div style={{
+      fontFamily: 'monospace', fontSize: 12.5, marginBottom: 5,
+      display: 'flex', gap: 8,
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'translateX(0)' : 'translateX(-8px)',
+      transition: 'all 0.4s ease',
+    }}>
       <span style={{ color: accent, flexShrink: 0 }}>›</span>
       <span style={{ color }}>{line.text}</span>
     </div>
@@ -50,29 +40,10 @@ function TerminalLine({ line }) {
 
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        position: 'relative',
-        overflow: 'hidden',
-        padding: '120px 24px 80px',
-      }}
-    >
+    <section id="hero" className="hero-section">
       {/* Grid background */}
-      <svg
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          opacity: 0.055,
-          pointerEvents: 'none',
-        }}
-        preserveAspectRatio="xMidYMid slice"
-      >
+      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.055, pointerEvents: 'none' }}
+        preserveAspectRatio="xMidYMid slice">
         <defs>
           <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
             <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#A3E635" strokeWidth="0.5" />
@@ -80,94 +51,43 @@ export default function Hero() {
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
+      {/* Glow */}
+      <div style={{
+        position: 'absolute', top: '15%', right: '8%',
+        width: 420, height: 420,
+        background: 'radial-gradient(circle, rgba(163,230,53,0.07) 0%, transparent 70%)',
+        borderRadius: '50%', pointerEvents: 'none',
+      }} />
 
-      {/* Glow orb */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '15%',
-          right: '8%',
-          width: 420,
-          height: 420,
-          background: 'radial-gradient(circle, rgba(163,230,53,0.07) 0%, transparent 70%)',
-          borderRadius: '50%',
-          pointerEvents: 'none',
-        }}
-      />
-
-      <div
-        style={{
-          maxWidth: 1160,
-          margin: '0 auto',
-          width: '100%',
-          position: 'relative',
-          zIndex: 2,
-          display: 'grid',
-          gridTemplateColumns: '1fr 420px',
-          gap: 80,
-          alignItems: 'center',
-        }}
-      >
+      <div className="hero-inner">
         <div>
-          <span
-            style={{
-              fontFamily: 'monospace',
-              fontSize: 11,
-              color: accent,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              display: 'block',
-              marginBottom: 18,
-            }}
-          >
+          <span style={{
+            fontFamily: 'monospace', fontSize: 11, color: accent,
+            letterSpacing: '0.2em', textTransform: 'uppercase', display: 'block', marginBottom: 18,
+          }}>
             // TBN Network — United Kingdom
           </span>
-
-          <h1
-            style={{
-              fontFamily: 'var(--font-exo2), sans-serif',
-              fontSize: 'clamp(38px, 5.5vw, 68px)',
-              fontWeight: 800,
-              lineHeight: 1.06,
-              letterSpacing: '-0.03em',
-              marginBottom: 24,
-              color: textPrimary,
-            }}
-          >
-            Infrastructure that
-            <br />
+          <h1 style={{
+            fontFamily: 'var(--font-exo2), sans-serif',
+            fontSize: 'clamp(36px, 5.5vw, 68px)',
+            fontWeight: 800, lineHeight: 1.06, letterSpacing: '-0.03em',
+            marginBottom: 24, color: textPrimary,
+          }}>
+            Infrastructure that<br />
             <span style={{ color: accent }}>never sleeps.</span>
           </h1>
-
-          <p
-            style={{
-              fontSize: 17,
-              color: textSecondary,
-              lineHeight: 1.8,
-              maxWidth: 520,
-              marginBottom: 44,
-            }}
-          >
+          <p style={{ fontSize: 17, color: textSecondary, lineHeight: 1.8, maxWidth: 520, marginBottom: 44 }}>
             DevOps engineering and enterprise networking for UK businesses that cannot afford
-            downtime. From cloud to cable — we design, build, and operate your critical
-            infrastructure.
+            downtime. From cloud to cable — we design, build, and operate your critical infrastructure.
           </p>
-
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          <div className="hero-buttons">
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               style={{
-                background: accent,
-                color: '#060D1A',
-                border: 'none',
-                padding: '14px 32px',
-                borderRadius: 4,
-                fontSize: 15,
-                fontWeight: 700,
-                cursor: 'pointer',
-                fontFamily: 'var(--font-exo2), sans-serif',
-                letterSpacing: '0.02em',
-                transition: 'all 0.2s',
+                background: accent, color: '#060D1A', border: 'none',
+                padding: '14px 32px', borderRadius: 4, fontSize: 15, fontWeight: 700,
+                cursor: 'pointer', fontFamily: 'var(--font-exo2), sans-serif',
+                letterSpacing: '0.02em', transition: 'all 0.2s',
               }}
               onMouseEnter={(e) => (e.target.style.background = '#BEF264')}
               onMouseLeave={(e) => (e.target.style.background = accent)}
@@ -177,15 +97,10 @@ export default function Hero() {
             <button
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               style={{
-                background: 'transparent',
-                color: textPrimary,
+                background: 'transparent', color: textPrimary,
                 border: '1px solid rgba(241,245,249,0.2)',
-                padding: '14px 32px',
-                borderRadius: 4,
-                fontSize: 15,
-                fontWeight: 500,
-                cursor: 'pointer',
-                transition: 'all 0.2s',
+                padding: '14px 32px', borderRadius: 4, fontSize: 15,
+                fontWeight: 500, cursor: 'pointer', transition: 'all 0.2s',
               }}
               onMouseEnter={(e) => (e.target.style.borderColor = 'rgba(241,245,249,0.5)')}
               onMouseLeave={(e) => (e.target.style.borderColor = 'rgba(241,245,249,0.2)')}
@@ -195,15 +110,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Terminal */}
-        <div
-          style={{
-            background: surface,
-            border: `1px solid ${border}`,
-            borderRadius: 8,
-            padding: '20px 24px',
-          }}
-        >
+        {/* Terminal — hidden on mobile via CSS */}
+        <div className="hero-terminal" style={{
+          background: surface, border: `1px solid ${border}`, borderRadius: 8, padding: '20px 24px',
+        }}>
           <div style={{ display: 'flex', gap: 6, marginBottom: 16, alignItems: 'center' }}>
             <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#EF4444', opacity: 0.8 }} />
             <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#F59E0B', opacity: 0.8 }} />

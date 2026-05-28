@@ -3,7 +3,6 @@
 const accent = '#A3E635'
 const bg = '#060D1A'
 const surface = '#0B1220'
-const border = 'rgba(163,230,53,0.12)'
 const textPrimary = '#F1F5F9'
 const textSecondary = '#94A3B8'
 
@@ -87,98 +86,33 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <section id="services" style={{ padding: '96px 24px', position: 'relative' }}>
-      <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-        <span
-          style={{
-            fontFamily: 'monospace',
-            fontSize: 11,
-            color: accent,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            display: 'block',
-            marginBottom: 12,
-          }}
-        >
+    <section id="services" className="section-pad">
+      <div className="container">
+        <span style={{ fontFamily: 'monospace', fontSize: 11, color: accent, letterSpacing: '0.2em', textTransform: 'uppercase', display: 'block', marginBottom: 12 }}>
           // What we do
         </span>
-        <h2
-          style={{
-            fontFamily: 'var(--font-exo2), sans-serif',
-            fontSize: 'clamp(26px, 4vw, 40px)',
-            fontWeight: 700,
-            color: textPrimary,
-            marginBottom: 16,
-            letterSpacing: '-0.02em',
-          }}
-        >
+        <h2 style={{ fontFamily: 'var(--font-exo2), sans-serif', fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 700, color: textPrimary, marginBottom: 16, letterSpacing: '-0.02em' }}>
           End-to-end infrastructure services
         </h2>
-        <p
-          style={{
-            color: textSecondary,
-            fontSize: 16,
-            maxWidth: 500,
-            marginBottom: 52,
-            lineHeight: 1.8,
-          }}
-        >
-          We don&apos;t sell products. We solve engineering problems — from your first pipeline to
-          your most complex multi-region deployment.
+        <p style={{ color: textSecondary, fontSize: 16, maxWidth: 500, marginBottom: 52, lineHeight: 1.8 }}>
+          We don&apos;t sell products. We solve engineering problems — from your first pipeline to your most complex multi-region deployment.
         </p>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 1,
-            background: 'rgba(163,230,53,0.08)',
-            borderRadius: 8,
-            overflow: 'hidden',
-            border: `1px solid ${border}`,
-          }}
-        >
+        <div className="services-grid">
           {SERVICES.map((s, i) => (
             <div
               key={i}
-              style={{
-                background: bg,
-                padding: '32px 28px',
-                transition: 'background 0.2s',
-                cursor: 'default',
-              }}
+              style={{ background: bg, padding: '32px 28px', transition: 'background 0.2s', cursor: 'default' }}
               onMouseEnter={(e) => (e.currentTarget.style.background = surface)}
               onMouseLeave={(e) => (e.currentTarget.style.background = bg)}
             >
               <div style={{ marginBottom: 16 }}>{s.icon}</div>
-              <h3
-                style={{
-                  fontFamily: 'var(--font-exo2), sans-serif',
-                  fontSize: 17,
-                  fontWeight: 700,
-                  color: textPrimary,
-                  marginBottom: 10,
-                }}
-              >
+              <h3 style={{ fontFamily: 'var(--font-exo2), sans-serif', fontSize: 17, fontWeight: 700, color: textPrimary, marginBottom: 10 }}>
                 {s.title}
               </h3>
-              <p style={{ fontSize: 13.5, color: textSecondary, lineHeight: 1.75, marginBottom: 18 }}>
-                {s.desc}
-              </p>
+              <p style={{ fontSize: 13.5, color: textSecondary, lineHeight: 1.75, marginBottom: 18 }}>{s.desc}</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
                 {s.tags.map((t) => (
-                  <span
-                    key={t}
-                    style={{
-                      fontFamily: 'monospace',
-                      fontSize: 11,
-                      color: accent,
-                      background: 'rgba(163,230,53,0.06)',
-                      border: '1px solid rgba(163,230,53,0.2)',
-                      padding: '3px 8px',
-                      borderRadius: 3,
-                    }}
-                  >
+                  <span key={t} style={{ fontFamily: 'monospace', fontSize: 11, color: accent, background: 'rgba(163,230,53,0.06)', border: '1px solid rgba(163,230,53,0.2)', padding: '3px 8px', borderRadius: 3 }}>
                     {t}
                   </span>
                 ))}

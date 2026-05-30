@@ -22,19 +22,19 @@ export default function CTA() {
         </p>
         <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}>
           <button
-            onClick={() => window.location.href = 'mailto:hello@tbnnetwork.co.uk?subject=Discovery Call Request&body=Hi TBN Network,%0D%0A%0D%0AI would like to book a discovery call to discuss our infrastructure needs.%0D%0A%0D%0ACompany:%0D%0AName:%0D%0AAvailability:'}
+            onClick={() => window.location.href = 'mailto:info@tbnnetworkltd.co.uk?subject=Discovery Call Request&body=Hi TBN Network,%0D%0A%0D%0AI would like to book a discovery call to discuss our infrastructure needs.%0D%0A%0D%0ACompany:%0D%0AName:%0D%0AAvailability:'}
             style={{ background: accent, color: '#060D1A', border: 'none', padding: '16px 36px', borderRadius: 4, fontSize: 15, fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-exo2), sans-serif', letterSpacing: '0.02em', transition: 'all 0.2s' }}
             onMouseEnter={(e) => (e.target.style.background = '#BEF264')}
             onMouseLeave={(e) => (e.target.style.background = accent)}
           >
             Book a discovery call →
           </button>
-          <a href="mailto:hello@tbnnetwork.co.uk"
+          <a href="mailto:info@tbnnetworkltd.co.uk"
             style={{ color: '#64748B', fontFamily: 'monospace', fontSize: 15, transition: 'color 0.2s' }}
             onMouseEnter={(e) => (e.target.style.color = accent)}
             onMouseLeave={(e) => (e.target.style.color = '#64748B')}
           >
-            hello@tbnnetwork.co.uk
+            info@tbnnetworkltd.co.uk
           </a>
         </div>
       </div>
